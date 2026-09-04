@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geoffrey B. Yosores — Construction Estimating &amp; Virtual Assistance</title>
+<meta name="description" content="Geoffrey B. Yosores — Civil Engineering Technology graduate, Junior Construction Estimating Specialist and Virtual Assistant. Quantity takeoffs, BOQ preparation, technical drafting, and virtual assistance for contractors and growing businesses.">
+
+<!--
+  ============================================================
+  EDIT ME — quick checklist before you publish this site
+  ============================================================
+  1. Replace the placeholder email, phone, location and profile
+     links in the Contact section (search for "EDIT:").
+  2. Swap the "GY" monogram in the hero for a real photo if you
+     have one — see the .hero-photo block.
+  3. Add real project screenshots inside the .project-visual
+     blocks in the Portfolio section (they currently use simple
+     line-drawing placeholders).
+  4. When you have client feedback, replace the Testimonials
+     placeholder with real quotes and names.
+  5. The contact form opens the visitor's email app pre-filled
+     with their message (no server needed). Swap the JS at the
+     bottom for a form service (e.g. Formspree) if you'd rather
+     receive submissions directly.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* =============================== TOKENS =============================== */
+  :root{
+    --navy:#132844;
+    --navy-deep:#0B1A2C;
+    --charcoal:#292E33;
+    --paper:#F6F4EE;
+    --paper-dim:#EFEBE1;
+    --white:#FFFFFF;
+    --orange:#E0611C;
+    --orange-deep:#B94E15;
+    --blueprint:#3E6FA3;
+    --line:#DAD4C6;
+    --line-dark:rgba(255,255,255,0.16);
+
+    --font-head:'Archivo', sans-serif;
+    --font-body:'Inter', sans-serif;
+
+    --maxw:1180px;
+    --gap:24px;
+    --radius:3px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--charcoal);
+    background:var(--paper);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:var(--font-head);
+    color:var(--navy);
+    margin:0 0 0.5em 0;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+
+  p{ margin:0 0 1em 0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  ul{ margin:0; padding:0; list-style:none; }
+  button{ font-family:inherit; }
+
+  .container{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--orange);
+    outline-offset:3px;
+  }
+
+  /* faint blueprint grid backdrop */
+  .grid-bg{
+    background-image:
+      linear-gradient(rgba(62,111,163,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(62,111,163,0.07) 1px, transparent 1px);
+    background-size:36px 36px;
+  }
+
+  .sheet-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-head);
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:var(--blueprint);
+    margin-bottom:18px;
+  }
+  .sheet-tag::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--blueprint);
+    display:inline-block;
+  }
+
+  section{ position:relative; padding:96px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(28px,3.4vw,38px); }
+  .section-head .lede{ color:#565b60; font-size:17px; max-width:52ch; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:var(--font-head);
+    font-weight:600;
+    font-size:14.5px;
+    padding:14px 26px;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .btn-primary{ background:var(--orange); color:var(--white); }
+  .btn-primary:hover{ background:var(--orange-deep); transform:translateY(-1px); }
+  .btn-ghost{ background:transparent; color:var(--navy); border-color:var(--navy); }
+  .btn-ghost:hover{ background:var(--navy); color:var(--white); }
+  .btn-ghost-light{ background:transparent; color:var(--white); border-color:rgba(255,255,255,0.5); }
+  .btn-ghost-light:hover{ border-color:var(--white); background:rgba(255,255,255,0.08); }
+
+  .icon{ width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.6; flex-shrink:0; }
+
+  /* =============================== HEADER =============================== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,244,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--font-head); font-weight:700; color:var(--navy); font-size:17px; }
+  .brand-mark{
+    width:34px; height:34px; border:1.5px solid var(--navy); border-radius:2px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-head); font-weight:700; font-size:13px; color:var(--navy);
+    position:relative;
+  }
+  .brand-mark::after{
+    content:""; position:absolute; inset:-5px; border:1px solid var(--orange); opacity:0.5; pointer-events:none;
+  }
+
+  nav.primary-nav ul{ display:flex; gap:34px; }
+  nav.primary-nav a{
+    font-size:14.5px; font-weight:500; color:var(--charcoal);
+    padding:4px 0; border-bottom:1px solid transparent;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.primary-nav a:hover, nav.primary-nav a.active{ color:var(--orange); border-color:var(--orange); }
+
+  .nav-cta{ display:flex; align-items:center; gap:18px; }
+  .nav-toggle{
+    display:none; width:40px; height:40px; align-items:center; justify-content:center;
+    background:none; border:1px solid var(--line); border-radius:var(--radius); cursor:pointer;
+  }
+
+  /* =============================== HERO =============================== */
+  .hero{ padding-top:88px; padding-bottom:80px; overflow:hidden; }
+  .hero-inner{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center; }
+  .hero-name{ font-size:clamp(14px,1.4vw,15px); letter-spacing:0.06em; color:var(--blueprint); font-family:var(--font-head); font-weight:600; margin-bottom:14px; }
+  .hero h1{ font-size:clamp(34px,4.6vw,54px); max-width:15ch; }
+  .hero .role-line{ font-size:17px; color:#4b5157; max-width:46ch; margin-bottom:20px; }
+  .hero .intro{ font-size:16.5px; color:#4b5157; max-width:48ch; }
+  .hero-actions{ display:flex; gap:14px; margin-top:8px; flex-wrap:wrap; }
+
+  .hero-visual{ position:relative; display:flex; flex-direction:column; align-items:center; gap:20px; }
+  .hero-photo{
+    width:100%; max-width:300px; aspect-ratio:4/5;
+    border:1.5px solid var(--navy);
+    background:var(--white);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .hero-photo::before, .hero-photo::after{
+    content:""; position:absolute; width:14px; height:14px; border:1.5px solid var(--orange);
+  }
+  .hero-photo::before{ top:-7px; left:-7px; border-right:none; border-bottom:none; }
+  .hero-photo::after{ bottom:-7px; right:-7px; border-left:none; border-top:none; }
+  .hero-photo .monogram{ font-family:var(--font-head); font-weight:800; font-size:64px; color:var(--navy); opacity:0.9; }
+  .hero-photo .photo-caption{ position:absolute; bottom:10px; font-size:11px; color:#9a9186; font-family:var(--font-head); letter-spacing:0.03em; }
+
+  .hero-lines{ width:100%; max-width:300px; }
+
+  /* =============================== ABOUT =============================== */
+  .about-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:64px; align-items:start; }
+  .about-grid p{ font-size:16.5px; color:#3c4145; }
+  .focus-tags{ display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line); }
+  .focus-tags li{ display:flex; align-items:baseline; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--line); font-family:var(--font-head); }
+  .focus-tags li span:first-child{ font-weight:600; color:var(--navy); font-size:15px; }
+  .focus-tags li span:last-child{ font-size:12px; color:var(--blueprint); }
+
+  /* =============================== SERVICES =============================== */
+  .services-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .service-card{ background:var(--paper); padding:36px; }
+  .service-card .icon-wrap{
+    width:46px; height:46px; border:1px solid var(--navy); border-radius:var(--radius);
+    display:flex; align-items:center; justify-content:center; color:var(--navy); margin-bottom:20px;
+  }
+  .service-card h3{ font-size:19px; margin-bottom:12px; }
+  .service-card ul li{ position:relative; padding-left:16px; font-size:14.5px; color:#4b5157; margin-bottom:8px; }
+  .service-card ul li::before{ content:"–"; position:absolute; left:0; color:var(--orange); }
+
+  /* =============================== SKILLS =============================== */
+  .skills-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+  .skill-col h3{ font-size:15px; text-transform:none; padding-bottom:14px; border-bottom:2px solid var(--navy); margin-bottom:18px; }
+  .skill-col ul li{ display:flex; align-items:center; gap:10px; font-size:14.5px; color:#3c4145; padding:8px 0; border-bottom:1px solid var(--line); }
+  .skill-col .icon{ width:14px; height:14px; color:var(--orange); }
+
+  /* =============================== PORTFOLIO =============================== */
+  .project{ border-top:1px solid var(--line); }
+  .project:last-child{ border-bottom:1px solid var(--line); }
+  .project-summary{
+    width:100%; display:grid; grid-template-columns:56px 1fr auto; align-items:center; gap:24px;
+    padding:26px 4px; background:none; border:none; text-align:left; cursor:pointer; color:inherit;
+  }
+  .project-index{ font-family:var(--font-head); font-weight:700; font-size:15px; color:var(--blueprint); }
+  .project-summary h3{ font-size:19px; margin-bottom:4px; }
+  .project-summary .project-meta{ font-size:13.5px; color:#767b7f; }
+  .project-toggle-icon{ width:18px; height:18px; color:var(--navy); transition:transform 0.2s ease; flex-shrink:0; }
+  .project[data-open="true"] .project-toggle-icon{ transform:rotate(45deg); }
+
+  .project-detail{
+    display:grid; grid-template-columns:220px 1fr; gap:36px;
+    max-height:0; overflow:hidden; transition:max-height 0.28s ease;
+    padding:0 4px;
+  }
+  .project[data-open="true"] .project-detail{ padding-bottom:34px; }
+
+  .project-visual{
+    width:100%; aspect-ratio:4/3; border:1px solid var(--line-strong,var(--navy)); background:var(--white);
+    display:flex; align-items:center; justify-content:center; color:var(--navy); opacity:0.85;
+  }
+  .project-visual svg{ width:70%; height:70%; }
+
+  .project-body dl{ display:grid; grid-template-columns:auto 1fr; gap:6px 18px; margin-bottom:16px; font-size:13.5px; }
+  .project-body dt{ font-family:var(--font-head); font-weight:600; color:var(--navy); }
+  .project-body dd{ margin:0; color:#4b5157; }
+  .project-body p{ font-size:14.5px; color:#4b5157; }
+  .deliverables-title{ font-family:var(--font-head); font-weight:600; font-size:13px; color:var(--navy); margin-bottom:8px; }
+
+  /* =============================== PROCESS =============================== */
+  .process-list{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; border-top:1px solid var(--navy); }
+  .process-step{ padding:26px 20px 0 0; border-right:1px solid var(--line); }
+  .process-step:last-child{ border-right:none; }
+  .process-num{ font-family:var(--font-head); font-weight:800; font-size:26px; color:var(--orange); display:block; margin-bottom:14px; }
+  .process-step h3{ font-size:16px; margin-bottom:8px; }
+  .process-step p{ font-size:13.5px; color:#5a6065; }
+
+  /* =============================== WHY =============================== */
+  .why-section{ background:var(--navy); color:var(--white); }
+  .why-section .section-head h2{ color:var(--white); }
+  .why-section .section-head .lede{ color:#B9C3CE; }
+  .why-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px 40px; }
+  .why-item{ display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--line-dark); }
+  .why-item .icon{ color:var(--orange); margin-top:2px; }
+  .why-item p{ margin:0; font-size:14.5px; color:#D7DEE5; }
+
+  /* =============================== SOFTWARE =============================== */
+  .software-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .software-tile{ background:var(--white); aspect-ratio:1.5/1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:12px; text-align:center; }
+  .software-tile span{ font-family:var(--font-head); font-weight:600; font-size:13px; color:var(--navy); }
+  .software-tile.placeholder{ border:1px dashed var(--line); background:var(--paper-dim); }
+  .software-tile.placeholder span{ color:#a39c8d; font-weight:500; }
+
+  /* =============================== TESTIMONIALS =============================== */
+  .testimonial-placeholder{
+    border:1px dashed var(--line);
+    padding:48px 32px;
+    text-align:center;
+    max-width:520px;
+  }
+  .testimonial-placeholder p{ color:#767b7f; font-size:14.5px; margin:0; }
+
+  /* =============================== CTA =============================== */
+  .cta-band{ background:var(--orange); color:var(--white); border-bottom:none; padding:72px 0; }
+  .cta-inner{ display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+  .cta-inner h2{ color:var(--white); font-size:clamp(24px,3vw,32px); max-width:20ch; margin-bottom:8px; }
+  .cta-inner p{ color:rgba(255,255,255,0.9); max-width:48ch; margin:0; }
+  .cta-band .btn-ghost-light{ color:var(--white); border-color:var(--white); flex-shrink:0; }
+  .cta-band .btn-ghost-light:hover{ background:var(--white); color:var(--orange-deep); }
+
+  /* =============================== CONTACT =============================== */
+  .contact-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; }
+  .contact-list{ display:flex; flex-direction:column; gap:0; margin-top:8px; }
+  .contact-list li{ display:flex; align-items:center; gap:14px; padding:16px 0; border-bottom:1px solid var(--line); }
+  .contact-list .icon{ color:var(--orange); }
+  .contact-list a, .contact-list span.value{ font-size:14.5px; color:var(--charcoal); }
+  .contact-list .label{ display:block; font-size:11.5px; color:#9a9186; font-family:var(--font-head); letter-spacing:0.03em; }
+  .placeholder-text{ color:#a39c8d; font-style:italic; }
+
+  form.contact-form{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  form.contact-form .full{ grid-column:1 / -1; }
+  form.contact-form label{ display:block; font-family:var(--font-head); font-weight:600; font-size:13px; color:var(--navy); margin-bottom:8px; }
+  form.contact-form input, form.contact-form select, form.contact-form textarea{
+    width:100%; border:1px solid var(--line); background:var(--white); padding:12px 14px;
+    font-family:var(--font-body); font-size:14.5px; color:var(--charcoal); border-radius:var(--radius);
+  }
+  form.contact-form input:focus, form.contact-form select:focus, form.contact-form textarea:focus{
+    outline:none; border-color:var(--blueprint);
+  }
+  form.contact-form textarea{ resize:vertical; min-height:110px; }
+  .form-note{ font-size:12.5px; color:#9a9186; margin-top:4px; }
+
+  /* =============================== FOOTER =============================== */
+  footer{ background:var(--navy-deep); color:#B9C3CE; padding:56px 0 28px; }
+  .footer-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:32px; flex-wrap:wrap; padding-bottom:32px; border-bottom:1px solid var(--line-dark); }
+  .footer-brand h3{ color:var(--white); font-size:18px; margin-bottom:6px; }
+  .footer-brand p{ font-size:13.5px; color:#8695A6; margin:0; }
+  footer nav ul{ display:flex; gap:26px; flex-wrap:wrap; }
+  footer nav a{ font-size:13.5px; color:#B9C3CE; }
+  footer nav a:hover{ color:var(--orange); }
+  .footer-bottom{ padding-top:22px; font-size:12.5px; color:#66748A; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+  /* =============================== RESPONSIVE =============================== */
+  @media (max-width:980px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; max-width:340px; }
+    .about-grid, .contact-grid{ grid-template-columns:1fr; gap:40px; }
+    .services-grid{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:1fr; gap:32px; }
+    .process-list{ grid-template-columns:repeat(2,1fr); }
+    .process-step{ border-right:none; border-bottom:1px solid var(--line); padding-bottom:26px; }
+    .why-grid{ grid-template-columns:1fr; }
+    .software-grid{ grid-template-columns:repeat(3,1fr); }
+    .project-detail{ grid-template-columns:1fr; }
+    .project-visual{ max-width:220px; }
+  }
+
+  @media (max-width:640px){
+    .container{ padding:0 20px; }
+    section{ padding:64px 0; }
+    nav.primary-nav, .nav-cta .btn{ display:none; }
+    .nav-toggle{ display:flex; }
+    header.nav-open nav.primary-nav{
+      display:block; position:absolute; top:76px; left:0; right:0;
+      background:var(--paper); border-bottom:1px solid var(--line); padding:8px 20px 20px;
+    }
+    header.nav-open nav.primary-nav ul{ flex-direction:column; gap:4px; }
+    header.nav-open nav.primary-nav a{ display:block; padding:12px 0; border-bottom:1px solid var(--line); }
+    .hero-actions{ flex-direction:column; align-items:stretch; }
+    .process-list{ grid-template-columns:1fr; }
+    .software-grid{ grid-template-columns:repeat(2,1fr); }
+    form.contact-form{ grid-template-columns:1fr; }
+    .cta-inner{ flex-direction:column; align-items:flex-start; }
+    .project-summary{ grid-template-columns:36px 1fr auto; }
+  }
+</style>
+</head>
+<body class="grid-bg">
+
+<!-- ============================ ICON SPRITE ============================ -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="icon-ruler" viewBox="0 0 24 24"><path d="M3 16.5 16.5 3l4.5 4.5L7.5 21H3v-4.5Z"/><path d="M13 6.5 15.5 9M9.5 10 12 12.5M6 13.5 8.5 16"/></symbol>
+  <symbol id="icon-compass" viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.2"/><path d="M12 8.2 5 20h14L12 8.2Z"/><path d="M9 15h6"/></symbol>
+  <symbol id="icon-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A5.5 5.5 0 0 0 7.1 9.1 4 4 0 0 0 7 18Z"/></symbol>
+  <symbol id="icon-megaphone" viewBox="0 0 24 24"><path d="M3 10v4h3l7 4V6l-7 4H3Z"/><path d="M16 9a4 4 0 0 1 0 6"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M4 6h16v12H4V6Z"/><path d="m4 7 8 6 8-6"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></symbol>
+  <symbol id="icon-link" viewBox="0 0 24 24"><path d="M9 15l6-6M10 6l1-1a4 4 0 1 1 6 6l-1 1M14 18l-1 1a4 4 0 1 1-6-6l1-1"/></symbol>
+  <symbol id="icon-briefcase" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+  <symbol id="icon-takeoff" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M4 9h16M4 14h16M9 4v16M14 4v16"/></symbol>
+  <symbol id="icon-boq" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18"/><path d="M7 8h10M7 12h10M7 16h6"/></symbol>
+  <symbol id="icon-cube" viewBox="0 0 24 24"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></symbol>
+  <symbol id="icon-stack" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/></symbol>
+  <symbol id="icon-va" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></symbol>
+</svg>
+
+<!-- ============================ HEADER ============================ -->
+<header id="siteHeader">
+  <div class="container nav-row">
+    <a href="#top" class="brand">
+      <span class="brand-mark">GY</span>
+      Geoffrey B. Yosores
+    </a>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Contact Me</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="icon" style="color:var(--navy)"><use href="#icon-menu" id="navToggleIcon"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="sheet-tag">SHEET 01 — INTRODUCTION</div>
+        <h1>Construction Estimating &amp; Virtual Assistance Support for Growing Businesses</h1>
+        <p class="role-line">Civil Engineering Technology graduate working as a Junior Construction Estimating Specialist and Virtual Assistant.</p>
+        <p class="intro">I help contractors, general contractors, and growing businesses with accurate quantity takeoffs, BOQ preparation, technical drafting, bid documentation, and reliable virtual assistance.</p>
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn btn-primary">View My Portfolio</a>
+          <a href="#contact" class="btn btn-ghost">Let's Work Together</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo">
+          <span class="monogram">GY</span>
+          <span class="photo-caption">Photo placeholder — swap in yours</span>
+        </div>
+        <svg class="hero-lines" viewBox="0 0 300 90" fill="none" stroke="#3E6FA3" stroke-width="1">
+          <line x1="0" y1="10" x2="300" y2="10" stroke-dasharray="2 4"/>
+          <line x1="0" y1="10" x2="0" y2="20"/>
+          <line x1="300" y1="10" x2="300" y2="20"/>
+          <text x="150" y="6" fill="#3E6FA3" font-size="7" text-anchor="middle" font-family="Archivo, sans-serif" stroke="none">SCALE N.T.S.</text>
+          <line x1="0" y1="40" x2="300" y2="40" stroke-dasharray="2 4"/>
+          <line x1="0" y1="70" x2="300" y2="70" stroke-dasharray="2 4"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ABOUT ============================ -->
+  <section id="about">
+    <div class="container about-grid">
+      <div>
+        <div class="sheet-tag">SHEET 02 — ABOUT</div>
+        <h2>About Geoffrey</h2>
+        <p>Geoffrey is a Civil Engineering Technology graduate with hands-on experience in construction estimating and virtual assistance. His background covers quantity takeoffs, Bill of Quantities preparation, and technical drafting in AutoCAD 3D, alongside day-to-day administrative work — data management, document organization, graphic design, and social media support.</p>
+        <p>He works best on tasks that reward precision: reading drawings closely, checking numbers twice, and keeping files organized so nothing gets lost between the field and the office. Detail-oriented, organized, and committed to accuracy on every deliverable.</p>
+      </div>
+      <ul class="focus-tags">
+        <li><span>Civil Engineering Technology</span><span>Background</span></li>
+        <li><span>Construction Estimating</span><span>Quantity Takeoff · BOQ</span></li>
+        <li><span>Technical Drafting</span><span>AutoCAD 3D</span></li>
+        <li><span>Virtual Assistance</span><span>Admin · Data · Social</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ SERVICES ============================ -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <div class="sheet-tag">SHEET 03 — SERVICES</div>
+        <h2>What I can help with</h2>
+        <p class="lede">Four areas of support, drawn from the estimating desk and the virtual office alike.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="icon-wrap"><svg class="icon"><use href="#icon-ruler"></use></svg></div>
+          <h3>Construction Estimating</h3>
+          <ul>
+            <li>Quantity takeoff</li>
+            <li>Material takeoff</li>
+            <li>Bill of Quantities (BOQ) preparation</li>
+            <li>Construction cost estimation</li>
+            <li>Scope of work analysis</li>
+            <li>Quantity verification and reconciliation</li>
+            <li>Bid preparation support</li>
+            <li>Tender documentation</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="icon-wrap"><svg class="icon"><use href="#icon-compass"></use></svg></div>
+          <h3>Technical Drafting</h3>
+          <ul>
+            <li>AutoCAD 3D modeling</li>
+            <li>Technical drafting</li>
+            <li>Drawing interpretation</li>
+            <li>Plan review</li>
+            <li>Dimensional verification</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="icon-wrap"><svg class="icon"><use href="#icon-cloud"></use></svg></div>
+          <h3>Virtual Assistance</h3>
+          <ul>
+            <li>Data management</li>
+            <li>Data processing</li>
+            <li>Digital records management</li>
+            <li>Administrative support</li>
+            <li>Online research</li>
+            <li>Document organization</li>
+            <li>Project coordination</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="icon-wrap"><svg class="icon"><use href="#icon-megaphone"></use></svg></div>
+          <h3>Digital &amp; Social Media Support</h3>
+          <ul>
+            <li>Graphic design</li>
+            <li>Social media content creation</li>
+            <li>Social media scheduling</li>
+            <li>Content management</li>
+            <li>Caption and hashtag preparation</li>
+            <li>Digital asset organization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SKILLS ============================ -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div class="sheet-tag">SHEET 04 — TECHNICAL SKILLS</div>
+        <h2>Skills &amp; expertise</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-col">
+          <h3>Construction &amp; Estimating</h3>
+          <ul>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Quantity takeoff</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Material quantification</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Bill of Quantities</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Cost estimation</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Scope analysis</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Bid preparation</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Tender documentation</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Construction drawing interpretation</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h3>Software</h3>
+          <ul>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>PlanSwift</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>AutoCAD</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>AutoCAD 3D</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Microsoft Excel</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Microsoft Word</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h3>Virtual Assistance</h3>
+          <ul>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Data management</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Administrative support</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Document management</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Online research</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Social media management</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Graphic design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PORTFOLIO ============================ -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-head">
+        <div class="sheet-tag">SHEET 05 — PORTFOLIO</div>
+        <h2>Selected work</h2>
+        <p class="lede">Five representative assignments. Tap any row to see the scope and deliverables.</p>
+      </div>
+
+      <div class="project-list">
+
+        <div class="project" data-open="false">
+          <button class="project-summary" aria-expanded="false">
+            <span class="project-index">01</span>
+            <span>
+              <h3>Construction Quantity Takeoff</h3>
+              <span class="project-meta">Quantity Takeoff · PlanSwift</span>
+            </span>
+            <svg class="icon project-toggle-icon"><use href="#icon-plus"></use></svg>
+          </button>
+          <div class="project-detail">
+            <div class="project-visual"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" fill="none"><use href="#icon-takeoff"></use></svg></div>
+            <div class="project-body">
+              <dl>
+                <dt>Role</dt><dd>Junior Construction Estimating Specialist</dd>
+                <dt>Tools</dt><dd>PlanSwift</dd>
+              </dl>
+              <p>Measured quantities directly from construction drawings to produce a full takeoff and quantity summary for pricing.</p>
+              <div class="deliverables-title">Key deliverables</div>
+              <p>Detailed quantity takeoff and quantity summary.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project" data-open="false">
+          <button class="project-summary" aria-expanded="false">
+            <span class="project-index">02</span>
+            <span>
+              <h3>Bill of Quantities Preparation</h3>
+              <span class="project-meta">BOQ · Excel &amp; PlanSwift</span>
+            </span>
+            <svg class="icon project-toggle-icon"><use href="#icon-plus"></use></svg>
+          </button>
+          <div class="project-detail">
+            <div class="project-visual"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" fill="none"><use href="#icon-boq"></use></svg></div>
+            <div class="project-body">
+              <dl>
+                <dt>Role</dt><dd>Construction Estimating Specialist</dd>
+                <dt>Tools</dt><dd>Microsoft Excel, PlanSwift</dd>
+              </dl>
+              <p>Compiled a structured Bill of Quantities, cross-checked material quantities, and reconciled figures against the source drawings.</p>
+              <div class="deliverables-title">Key deliverables</div>
+              <p>BOQ, material quantities, quantity reconciliation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project" data-open="false">
+          <button class="project-summary" aria-expanded="false">
+            <span class="project-index">03</span>
+            <span>
+              <h3>3D Construction Drafting</h3>
+              <span class="project-meta">CAD / Technical Support · AutoCAD 3D</span>
+            </span>
+            <svg class="icon project-toggle-icon"><use href="#icon-plus"></use></svg>
+          </button>
+          <div class="project-detail">
+            <div class="project-visual"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" fill="none"><use href="#icon-cube"></use></svg></div>
+            <div class="project-body">
+              <dl>
+                <dt>Role</dt><dd>CAD / Technical Support</dd>
+                <dt>Tools</dt><dd>AutoCAD 3D</dd>
+              </dl>
+              <p>Built a 3D model from reference drawings and produced supporting technical drawings for review.</p>
+              <div class="deliverables-title">Key deliverables</div>
+              <p>3D model and technical drawings.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project" data-open="false">
+          <button class="project-summary" aria-expanded="false">
+            <span class="project-index">04</span>
+            <span>
+              <h3>Bid &amp; Tender Documentation</h3>
+              <span class="project-meta">Estimating Support</span>
+            </span>
+            <svg class="icon project-toggle-icon"><use href="#icon-plus"></use></svg>
+          </button>
+          <div class="project-detail">
+            <div class="project-visual"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" fill="none"><use href="#icon-stack"></use></svg></div>
+            <div class="project-body">
+              <dl>
+                <dt>Role</dt><dd>Estimating Support</dd>
+              </dl>
+              <p>Reviewed bid requirements and organized the supporting documentation needed for tender submission.</p>
+              <div class="deliverables-title">Key deliverables</div>
+              <p>Bid requirements review, tender documentation, estimating files.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project" data-open="false">
+          <button class="project-summary" aria-expanded="false">
+            <span class="project-index">05</span>
+            <span>
+              <h3>Virtual Assistant &amp; Digital Operations</h3>
+              <span class="project-meta">Virtual Assistant</span>
+            </span>
+            <svg class="icon project-toggle-icon"><use href="#icon-plus"></use></svg>
+          </button>
+          <div class="project-detail">
+            <div class="project-visual"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" fill="none"><use href="#icon-va"></use></svg></div>
+            <div class="project-body">
+              <dl>
+                <dt>Role</dt><dd>Virtual Assistant</dd>
+              </dl>
+              <p>Managed day-to-day digital operations, keeping records organized and content moving on schedule.</p>
+              <div class="deliverables-title">Key deliverables</div>
+              <p>Data management, document organization, graphic design, social media content and scheduling.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROCESS ============================ -->
+  <section id="process">
+    <div class="container">
+      <div class="section-head">
+        <div class="sheet-tag">SHEET 06 — WORK PROCESS</div>
+        <h2>How a project moves through</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-step">
+          <span class="process-num">01</span>
+          <h3>Understand</h3>
+          <p>Review project requirements, drawings, specifications, and client instructions.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">02</span>
+          <h3>Analyze</h3>
+          <p>Interpret plans, identify scope, and determine required quantities and deliverables.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">03</span>
+          <h3>Execute</h3>
+          <p>Perform quantity takeoffs, BOQ preparation, drafting, documentation, or admin tasks.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">04</span>
+          <h3>Verify</h3>
+          <p>Review quantities, documents, and deliverables for accuracy and completeness.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">05</span>
+          <h3>Deliver</h3>
+          <p>Provide organized, accurate, client-ready deliverables within the agreed timeline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ WHY WORK WITH ME ============================ -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="sheet-tag" style="color:#7FA8CC">SHEET 07 — WHY WORK WITH ME</div>
+        <h2>Why work with me</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Civil Engineering Technology background</p></div>
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Construction estimating knowledge</p></div>
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Strong attention to detail</p></div>
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Accurate quantity takeoffs</p></div>
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Organized documentation</p></div>
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Technical software proficiency</p></div>
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Reliable communication</p></div>
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Handles both technical and administrative tasks</p></div>
+        <div class="why-item"><svg class="icon"><use href="#icon-check"></use></svg><p>Committed to deadlines and quality</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SOFTWARE ============================ -->
+  <section id="software">
+    <div class="container">
+      <div class="section-head">
+        <div class="sheet-tag">SHEET 08 — SOFTWARE &amp; TOOLS</div>
+        <h2>Software &amp; tools</h2>
+      </div>
+      <div class="software-grid">
+        <div class="software-tile"><svg class="icon" style="color:var(--orange)"><use href="#icon-takeoff"></use></svg><span>PlanSwift</span></div>
+        <div class="software-tile"><svg class="icon" style="color:var(--orange)"><use href="#icon-compass"></use></svg><span>AutoCAD</span></div>
+        <div class="software-tile"><svg class="icon" style="color:var(--orange)"><use href="#icon-cube"></use></svg><span>AutoCAD 3D</span></div>
+        <div class="software-tile"><svg class="icon" style="color:var(--orange)"><use href="#icon-boq"></use></svg><span>Microsoft Excel</span></div>
+        <div class="software-tile"><svg class="icon" style="color:var(--orange)"><use href="#icon-stack"></use></svg><span>Microsoft Word</span></div>
+        <div class="software-tile placeholder"><svg class="icon"><use href="#icon-plus"></use></svg><span>Add software</span></div>
+        <div class="software-tile placeholder"><svg class="icon"><use href="#icon-plus"></use></svg><span>Add design tool</span></div>
+        <div class="software-tile placeholder"><svg class="icon"><use href="#icon-plus"></use></svg><span>Add PM tool</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ TESTIMONIALS ============================ -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <div class="sheet-tag">SHEET 09 — CLIENT FEEDBACK</div>
+        <h2>Testimonials</h2>
+      </div>
+      <div class="testimonial-placeholder">
+        <p>Client references and feedback coming soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA ============================ -->
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>Have a construction project or task that needs support?</h2>
+        <p>Whether you need quantity takeoffs, BOQ preparation, estimating support, technical drafting, or reliable virtual assistance, let's discuss how I can support your project.</p>
+      </div>
+      <a href="#contact" class="btn btn-ghost-light">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACT ============================ -->
+  <section id="contact">
+    <div class="container contact-grid">
+      <div>
+        <div class="sheet-tag">SHEET 10 — CONTACT</div>
+        <h2>Let's talk about your project</h2>
+        <p class="lede" style="margin-bottom:8px;">Reach out directly, or use the form and I'll follow up shortly.</p>
+        <ul class="contact-list">
+          <li>
+            <svg class="icon"><use href="#icon-mail"></use></svg>
+            <span>
+              <span class="label">Email</span>
+              <!-- EDIT: replace with your real email -->
+              <a href="mailto:youremail@example.com" class="placeholder-text">youremail@example.com</a>
+            </span>
+          </li>
+          <li>
+            <svg class="icon"><use href="#icon-pin"></use></svg>
+            <span>
+              <span class="label">Location</span>
+              <!-- EDIT: replace with your city and country -->
+              <span class="value placeholder-text">City, Country</span>
+            </span>
+          </li>
+          <li>
+            <svg class="icon"><use href="#icon-link"></use></svg>
+            <span>
+              <span class="label">LinkedIn</span>
+              <!-- EDIT: replace href with your LinkedIn URL -->
+              <a href="#" class="placeholder-text">linkedin.com/in/yourprofile</a>
+            </span>
+          </li>
+          <li>
+            <svg class="icon"><use href="#icon-briefcase"></use></svg>
+            <span>
+              <span class="label">Upwork</span>
+              <!-- EDIT: replace href with your Upwork profile URL -->
+              <a href="#" class="placeholder-text">upwork.com/freelancers/~yourprofile</a>
+            </span>
+          </li>
+          <li>
+            <svg class="icon"><use href="#icon-briefcase"></use></svg>
+            <span>
+              <span class="label">Freelancer</span>
+              <!-- EDIT: replace href with your Freelancer.com profile URL -->
+              <a href="#" class="placeholder-text">freelancer.com/u/yourprofile</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div>
+          <label for="f-name">Name</label>
+          <input type="text" id="f-name" name="name" required>
+        </div>
+        <div>
+          <label for="f-email">Email</label>
+          <input type="email" id="f-email" name="email" required>
+        </div>
+        <div>
+          <label for="f-company">Company</label>
+          <input type="text" id="f-company" name="company">
+        </div>
+        <div>
+          <label for="f-service">Service needed</label>
+          <select id="f-service" name="service">
+            <option>Construction Estimating</option>
+            <option>Technical Drafting</option>
+            <option>Virtual Assistance</option>
+            <option>Digital &amp; Social Media Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="full">
+          <label for="f-desc">Project description</label>
+          <textarea id="f-desc" name="description" rows="3"></textarea>
+        </div>
+        <div class="full">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" rows="4" required></textarea>
+        </div>
+        <div class="full">
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <p class="form-note">This opens your email app with the message pre-filled — no data is stored on this site.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Geoffrey B. Yosores</h3>
+        <p>Construction Estimating · Technical Support · Virtual Assistance</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Geoffrey B. Yosores. All rights reserved.</span>
+      <span>Built as a static, hostable single-page site.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile nav toggle
+  const header = document.getElementById('siteHeader');
+  const navToggle = document.getElementById('navToggle');
+  const navToggleIcon = document.getElementById('navToggleIcon');
+  navToggle.addEventListener('click', () => {
+    const isOpen = header.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggleIcon.setAttribute('href', isOpen ? '#icon-close' : '#icon-menu');
+  });
+  document.querySelectorAll('.primary-nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      header.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggleIcon.setAttribute('href', '#icon-menu');
+    });
+  });
+
+  // Active nav link on scroll
+  const sections = ['about','services','portfolio','skills','contact'].map(id => document.getElementById(id));
+  const navLinks = Array.from(document.querySelectorAll('.primary-nav a'));
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = navLinks.find(a => a.getAttribute('href') === '#' + entry.target.id);
+      if (link && entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => s && spy.observe(s));
+
+  // Portfolio accordion
+  document.querySelectorAll('.project-summary').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const project = btn.closest('.project');
+      const detail = project.querySelector('.project-detail');
+      const isOpen = project.getAttribute('data-open') === 'true';
+
+      document.querySelectorAll('.project').forEach(p => {
+        p.setAttribute('data-open', 'false');
+        p.querySelector('.project-summary').setAttribute('aria-expanded', 'false');
+        p.querySelector('.project-detail').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        project.setAttribute('data-open', 'true');
+        btn.setAttribute('aria-expanded', 'true');
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Contact form -> mailto (no backend needed)
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const f = e.target;
+    const subject = encodeURIComponent('New project inquiry from ' + f.name.value);
+    const body = encodeURIComponent(
+      'Name: ' + f.name.value +
+      '\nEmail: ' + f.email.value +
+      '\nCompany: ' + (f.company.value || '-') +
+      '\nService needed: ' + f.service.value +
+      '\nProject description: ' + (f.description.value || '-') +
+      '\n\nMessage:\n' + f.message.value
+    );
+    // EDIT: replace with your real email address
+    window.location.href = 'mailto:youremail@example.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
